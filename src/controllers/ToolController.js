@@ -5,16 +5,15 @@ const Tool = mongoose.model("Tool");
 module.exports = {
     async index(req, res) {
         const { page = 1 } = req.query;
-        const tools =  await Tool.paginate({}, {page, limit: 10});
+        const { tag } = req.query;
+        const tools =  await Tool.paginate(tag == undefined ? ({}, {page, limit: 10}) : {tags: tag}, {page, limit: 10});
+       
               
        return res.json(tools);
     },
 
     async filter(req, res) {
-        const { page = 1 } = req.query;
-        const { tag } = req.query;
-        const tools =  await Tool.paginate({tags: tag}, {page, limit: 10});
-       
+        
        return res.json(tools);
     },
     
@@ -27,8 +26,9 @@ module.exports = {
 
     async store(req, res) {                                                     
         const tool =  await Tool.create(req.body);
+        res.setHeader("content-type", "application/json")
         
-        return res.json(tool);
+        return res.status(201).json(tool);
      },
 
     async update(req, res) {
