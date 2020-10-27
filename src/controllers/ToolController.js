@@ -6,7 +6,7 @@ module.exports = {
     async index(req, res) {
         const { page = 1 } = req.query;
         const tools =  await Tool.paginate({}, {page, limit: 10});
-       
+              
        return res.json(tools);
     },
 
@@ -25,7 +25,7 @@ module.exports = {
         return res.json(tool);
     },
 
-    async store(req, res) {
+    async store(req, res) {                                                     
         const tool =  await Tool.create(req.body);
         
         return res.json(tool);

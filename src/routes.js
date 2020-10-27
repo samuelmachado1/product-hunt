@@ -11,6 +11,6 @@ routes.delete('/tools/:id', ToolController.destroy );
 routes.get('/tools/all', ToolController.index );
 
 
-
+// POR ALGUM MOTIVO PAROU DE FUNCIONAR O GET ALL!! VERIFICAR ANTES DE PROSSEGUIR.
 
 module.exports = routes;

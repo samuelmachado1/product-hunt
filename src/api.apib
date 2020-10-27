@@ -6,13 +6,42 @@ The application is a simple repository for managing tools with their names, link
 
 # Tools API
 
-## Tools [/tolls]
-This is our [resource](http://www.w3.org/TR/di-gloss/#def-resource). It is
-defined by its
-[URI](http://www.w3.org/TR/di-gloss/#def-uniform-resource-identifier) or, more
-precisely, by its [URI Template](http://tools.ietf.org/html/rfc6570).
+## Tools [/tools]
 
-This resource has no actions specified but we will fix that soon.
+This feature makes it possible to create a new record of a tool in the database and view it with a filter
+
+### Create New Tool [POST]
+
++ Request Create New Tool (application/json)
+
+    {
+        "title": "hotel",
+        "link": "https://github.com/typicode/hotel",
+        "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+        "tags":["node", "organizing", "webapps", "domain", "developer", "https", "proxy"]
+    }
+
++ Response 201 Created
+
+
+### GET Filter Tools By Tag[/tools{?tag=}]
+
+Resource that searches for tools filtered by tag.
+
+We have added the query URI parameter `tag`. This parameter is
+used to filter the tools from the Strings contained in the Tags field.
+
+### Retrieve all Tools [GET]
+
++ Parameters
+
+    + page (number, required) - Define the page to bring the results.
+        + Default: `1`
+    + limit (number, required) - The maximum number of results to return per page.
+        + Default: `10`
+
++ Response 200 (application/json)
+
 
 ## GET
 Here we define an action using the `GET` [HTTP request method](http://www.w3schools.com/tags/ref_httpmethods.asp) for our resource `/message`.
