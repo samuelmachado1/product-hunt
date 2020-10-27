@@ -23,6 +23,14 @@ This feature makes it possible to create a new record of a tool in the database 
 
 + Response 201 Created
 
+      {
+        "title": "hotel",
+        "link": "https://github.com/typicode/hotel",
+        "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+        "tags":["node", "organizing", "webapps", "domain", "developer", "https", "proxy"]
+        "_id": 1 // AutoGenerate
+    }
+
 
 ### GET Filter Tools By Tag[/tools{?tag=}]
 
@@ -30,6 +38,14 @@ Resource that searches for tools filtered by tag.
 
 We have added the query URI parameter `tag`. This parameter is
 used to filter the tools from the Strings contained in the Tags field.
+
+
++ Response 200 (application/json)
+    + Attributes (array[tool])
+
++ Response 404 (application/json)
+    + Attributes (Error)
+    
 
 ### Retrieve all Tools [GET]
 
@@ -41,3 +57,11 @@ used to filter the tools from the Strings contained in the Tags field.
         + Default: `10`
 
 + Response 200 (application/json)
+
+
+
+
+## Error (object)
++ code: 400 (number) - Status code
++ message (string) - Status message
++ description (string) - Status description
