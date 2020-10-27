@@ -8,7 +8,7 @@ routes.get('/tools', ProductController.filter );
 routes.get('/tools/:id', ProductController.show );
 routes.post('/tools', ProductController.store );
 routes.put('/tools/:id', ProductController.update );
-routes.delete('/products/:id', ProductController.destroy );
+routes.delete('/tools/:id', ProductController.destroy );
 
 
 
